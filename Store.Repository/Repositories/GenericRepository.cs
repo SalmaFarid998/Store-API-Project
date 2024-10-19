@@ -31,7 +31,7 @@ namespace Store.Repository.Repositories
         }
 
         public async Task<IReadOnlyList<TEntity>> GetAllAsync()
-        => await _context.Set<TEntity>().ToListAsync();
+        => await _context.Set<TEntity>().AsNoTracking().ToListAsync();
         
 
         public async Task<TEntity> GetByIdAsync(Tkey? id)
