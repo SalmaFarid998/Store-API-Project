@@ -11,7 +11,7 @@ namespace Store.Data.Entity
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string ImageURL { get; set; }
+        public string? ImageURL { get; set; }
         public decimal Price { get; set; }
         public int BrandID { get; set; }
         public  ProductBrand ProductBrand { get; set; }
