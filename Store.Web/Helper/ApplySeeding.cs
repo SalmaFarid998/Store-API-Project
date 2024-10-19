@@ -1,4 +1,5 @@
-﻿using Store.Data.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using Store.Data.Context;
 using Store.Repository;
 
 namespace Store.Web.Helper
@@ -14,6 +15,7 @@ namespace Store.Web.Helper
                 try
                 {
                     var context = service.GetRequiredService<StoreDBContext>();
+                    await context.Database.MigrateAsync();
                     await StoreContextSeed.SeedAsync(context, loggerFactory);
                 }
                 catch (Exception ex)
