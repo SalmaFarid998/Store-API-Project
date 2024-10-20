@@ -12,8 +12,11 @@ namespace Store.Service.Services.Products.Dtos
     {
         public ProductProfile()
         {
-            CreateMap<Product, ProductDto>().ForMember(dest=>dest.BrandName,option=>option.MapFrom(src=>src.Brand.Name));
-            CreateMap<Product, ProductDto>().ForMember(dest => dest.TypeName, option => option.MapFrom(src => src.Type.Name));
+            CreateMap<Product, ProductDto>()
+            .ForMember(dest=>dest.BrandName,option=>option.MapFrom(src=>src.Brand.Name))
+            .ForMember(dest => dest.TypeName, option => option.MapFrom(src => src.Type.Name));
+            CreateMap<ProductBrand, BrandTypeDetailsDto>();
+            CreateMap<ProductType,BrandTypeDetailsDto>();
         }
     }
 }
