@@ -15,6 +15,6 @@ namespace Store.Repository.Specification
         }
         public Expression<Func<T, bool>> Criteria { get; }
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
-        protected void AddInclide(Expression<Func<T, object>> includeEx) => Includes.Add(includeEx);
+        protected void AddInclude(Expression<Func<T, object>> includeEx) => Includes.Add(includeEx);
     }
 }
