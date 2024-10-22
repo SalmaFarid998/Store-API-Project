@@ -16,19 +16,19 @@ namespace Store.Web.Controllers
         {
             _productService = productService;
         }
-        [HttpGet]
+        [HttpGet("GetAllBrands")]
         public async Task<ActionResult<IReadOnlyList<BrandTypeDetailsDto>>> GetAllBrands()
         => Ok(await _productService.GetAllBrandsAsync());
 
-        [HttpGet]
+        [HttpGet("GetAllTypes")]
         public async Task<ActionResult<IReadOnlyList<BrandTypeDetailsDto>>> GetAllTypes()
         => Ok(await _productService.GetAllTypesAsync());
 
-        [HttpGet]
+        [HttpGet("GetAllProducts")]
         public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetAllProducts([FromQuery] ProductSpecification input)
             => Ok(await _productService.GetAllProductsAsync(input));
-        [HttpGet]
-        public async Task<ActionResult<ProductDto>> GetProductById(int? id)
+        [HttpGet("GetProductById")]
+        public async Task<ActionResult<ProductDto>> GetProductById([FromQuery] int? id)
            => Ok(Ok(await _productService.GetProductByIdAsync(id)));
     }
 }
