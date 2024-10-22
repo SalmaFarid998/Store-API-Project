@@ -27,6 +27,11 @@ namespace Store.Repository.Specification
                 query = query.OrderBy(specs.OrderByDesc);
             }
 
+            if (specs.IsPaginated)
+            {
+                query = query.Skip(specs.Skip).Take(specs.Take);
+            }
+
             query = query = specs.Includes.Aggregate(query,(Current,includeEx)=>Current.Include(includeEx));
             return query;
         }

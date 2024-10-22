@@ -19,13 +19,26 @@ namespace Store.Repository.Specification
         public Expression<Func<T, object>> OrderBy { get; private set; }
 
         public Expression<Func<T, object>> OrderByDesc  { get; private set; }
+        public int Take { get; private set; }
+        public int Skip { get; private set; }
+        public bool IsPaginated { get; private set; }
 
-    protected void AddInclude(Expression<Func<T, object>> includeEx) => Includes.Add(includeEx);
+        protected void AddInclude(Expression<Func<T, object>> includeEx) => Includes.Add(includeEx);
 
     protected void AddOrderBy(Expression<Func<T, object>> OrderByExpression)
     => OrderBy = OrderByExpression;
     protected void AddOrderByDescending(Expression<Func<T, object>> OrderByDescExpression)
     => OrderByDesc = OrderByDescExpression;
+
+    protected void ApplyPagination (int skip, int take)
+        {
+            Skip = skip;
+            Take = take;
+            IsPaginated = true;
+        }
+    
+
+
     }
     
 }
