@@ -27,6 +27,8 @@ namespace Store.Web.Helper
                     ContentType = "application/json",
                     StatusCode = 200,
                 };
+                context.Result = contentResult;
+                return;
             }
             else
             {
