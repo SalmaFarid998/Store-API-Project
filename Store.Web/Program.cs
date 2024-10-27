@@ -31,6 +31,13 @@ namespace Store.Web
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             }
             );
+
+            builder.Services.AddDbContext<StoreIdentityDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
+            }
+           );
+
             builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
             {
                 var Configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"));
@@ -38,6 +45,7 @@ namespace Store.Web
             });
 
             builder.Services.ApplicationServices();
+            builder.Services.AddIdentityService();
 
             var app = builder.Build();
 
